@@ -1,17 +1,19 @@
 import React from 'react';
 import { BiEditAlt,BiSolidTrash  } from "react-icons/bi";
 import "./ExpenseItem.css"
-const ExpenseItem = (props) => {
+const ExpenseItem = ({expense, handleEdit, handleDelete}) => {
   return (
     <li className='item'>
       <div className='info'>
-        <span className='expense'>{props.expense.charge}</span>
-        <span className='amount'>{props.expense.amount}</span>
+        <span className='expense'>{expense.charge}</span>
+        <span className='amount'>{expense.amount}</span>
       </div>
       <div>
-        <button className='edit-btn'><BiEditAlt /></button>
         <button
-          onClick={()=> props.handleDelete(props.expense.id)}
+          onClick={() => handleEdit(expense.id)}
+          className='edit-btn'><BiEditAlt /></button>
+        <button
+          onClick={()=> handleDelete(expense.id)}
           className='clear-btn'><BiSolidTrash /></button>
       </div>
     </li>
